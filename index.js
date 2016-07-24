@@ -70,7 +70,7 @@ function onIntent(intentRequest, session, callback) {
         intentName = intentRequest.intent.name;
 
     // Dispatch to your skill's intent handlers
-    if ("SpaceBall" === intentName) {
+    if ("postal" === intentName) {
         checkNEOs(intent, session, callback);
     } else if ("AMAZON.HelpIntent" === intentName) {
         getWelcomeResponse(callback);
@@ -89,3 +89,22 @@ function onSessionEnded(sessionEndedRequest, session) {
     // Add cleanup logic here
 }
 
+function getWelcomeResponse(callback) {
+    // If we wanted to initialize the session to have some attributes we could add those here.
+    var sessionAttributes = {};
+    var cardTitle = "Welcome";
+    var speechOutput = "Welcome to Postal. " +
+            "Find out the postal code of the locations in India.";
+    // If the user either does not reply to the welcome message or says something that is not
+    // understood, they will be prompted again with this text.
+    var repromptText = "You can also ask me , " +
+            "the postal codes of the cities. Just tell me the city name.";
+    var shouldEndSession = false;
+
+    callback(sessionAttributes,
+             buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+}
+
+
+/*Contact API */
+/*API SOURCE  http://www.getpincode.info/api/pincode?q=CITYNAME */
