@@ -1,0 +1,15 @@
+{
+
+	"intents":[
+		{
+			"intent":"postal",
+			"slots":{
+				"name":"city",
+				"type":"string"
+			}
+		},
+		{
+			"intent":"AMAZON.HelpIntent"
+		}
+	]
+}
