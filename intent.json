@@ -2,7 +2,7 @@
 
 	"intents":[
 		{
-			"intent":"postal",
+			"intent":"Postal",
 			"slots":{
 				"name":"city",
 				"type":"string"
