@@ -129,10 +129,15 @@ function(intent, session, callback){
 
  //Responses
 
- var responses = ["Thank you for find the postal code on this alexa skill"];
+ //var responses = ["Thank you for finding the postal code on this alexa skill"];
 
  getCode(city, function(results){
-
+ 		// Output Speech
+ 		speechOutput = "The postal code for provided " + city.toLowerCase() + "is" + results.pincode + 
+ 		". Thank You, for using postal";
+ 	// callback to create speech on device
+ 	callback(sessionAttributes,
+      buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
  });
 }
 
