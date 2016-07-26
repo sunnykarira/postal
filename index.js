@@ -108,3 +108,64 @@ function getWelcomeResponse(callback) {
 
 /*Contact API */
 /*API SOURCE  http://www.getpincode.info/api/pincode?q=CITYNAME */
+function(intent, session, callback){
+	console.log("the provided city name is "+ intent.slots.city.value);
+//Amazon Echo card title
+	var cardTitle = intent.name;
+
+// Intent value provided by the user;
+	var city;
+	if(intent.slots.city.value){
+		city = intent.slots.city.value;
+	}else{
+		city = "Delhi";
+	}
+
+// Session things
+  var repromptText = "";
+  var sessionAttributes = {};
+  var shouldEndSession = true;
+  var speechOutput = "";
+
+ //Responses
+
+ var responses = ["Thank you for find the postal code on this alexa skill"];
+
+ getCode(city, function(results){
+
+ });
+}
+
+
+// --------------- Helpers that build all of the responses -----------------------
+
+function buildSpeechletResponse(title, output, repromptText, shouldEndSession) {
+    return {
+        outputSpeech: {
+            type: "PlainText",
+            text: output
+        },
+        card: {
+            type: "Simple",
+            title: "SessionSpeechlet - " + title,
+            content: "SessionSpeechlet - " + output
+        },
+        reprompt: {
+            outputSpeech: {
+                type: "PlainText",
+                text: repromptText
+            }
+        },
+        shouldEndSession: shouldEndSession
+    };
+}
+
+function buildResponse(sessionAttributes, speechletResponse) {
+    return {
+        version: "1.0",
+        sessionAttributes: sessionAttributes,
+        response: speechletResponse
+    };
+}
+
+
