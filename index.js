@@ -168,4 +168,23 @@ function buildResponse(sessionAttributes, speechletResponse) {
     };
 }
 
+// Function that will contact API.
 
+function getCode(city, callback){
+
+	return http.get({
+		host: 'http://www.getpincode.info',
+		path: '/api/pincode?q='+ city.toLowerCase();
+	}, function(response){
+
+		// The data we will get from API
+		var body = '';
+		response.on('data', function(d){
+			body+=d;
+		});
+		response.on('end', function(){
+			console.log(body);
+			callback(JSON.parse(body));
+		});
+	});
+}
