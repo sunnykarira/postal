@@ -1,0 +1,12 @@
+Postal find me the postal code of {city}
+Postal get postal code {city}
+Postal postal code {city}
+Postal can I get the postal code for {city}
+Postal code {city}
+Postal get the code for {city}
+Postal get the postal code for  {city}
+Postal list the postal code for {city}
+Postal list {city}
+Postal get me the postal code for {city}
+Postal get me the code for {city}
+
